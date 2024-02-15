@@ -113,7 +113,9 @@ abstract class IntegrationTest {
           result
               .withCopyFileToContainer(
                   MountableFile.forHostPath(extensionPath), "/opentelemetry-extensions.jar")
-              .withEnv("OTEL_JAVAAGENT_EXTENSIONS", extensionLocation);
+              .withEnv("OTEL_JAVAAGENT_EXTENSIONS", extensionLocation)
+              .withEnv("OTEL_JAVAAGENT_EXTENSIONS_OIDC_ENDPOINT", "https://myIdp/token")
+              .withEnv("OTEL_JAVAAGENT_EXTENSIONS_OIDC_CLIENTID", "foo");
     }
     return result;
   }
